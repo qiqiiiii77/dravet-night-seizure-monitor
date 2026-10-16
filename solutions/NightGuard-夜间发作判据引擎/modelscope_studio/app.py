@@ -206,8 +206,8 @@ INTRO = """# NightGuard · 夜间发作判据引擎
 """
 
 
-# theme 放构造里：gradio 5.x 的 launch() 还不接受 theme（那是 6.0 的接口），
-# 传进 launch() 会 TypeError。5.x 这里只是弃用警告，功能正常。
+# theme 放 Blocks 构造里。gradio 5.x 的 launch() 不接受 theme（传进去 TypeError），
+# 6.x 这里只是弃用警告。放构造里是对 5/6 两个大版本都能跑的写法，两版均已实测。
 with gr.Blocks(title="NightGuard · 夜间发作判据引擎",
                theme=gr.themes.Soft()) as demo:
     gr.Markdown(INTRO)
