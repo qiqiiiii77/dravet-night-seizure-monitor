@@ -81,11 +81,26 @@ engine/      判据引擎（纯 numpy）
   posture.py / sustain.py / stepwise.py / gate.py
 tests/       292 项测试
 sim/         合成信号模拟器（无需真实数据即可跑）
-demo/        演示仪表盘（数据为合成，seed=2026）
+demo/        演示仪表盘（自包含 HTML，数据为合成，seed=2026）
+modelscope_studio/   魔搭创空间 Demo 源码（Gradio + 真实引擎推理）
 ENGINE.md    引擎原始说明
 ```
 
-## 五、跑起来
+## 五、在线 Demo（魔搭创空间）
+
+`modelscope_studio/` 是魔搭创空间的 Demo 源码：Gradio 界面 + **真实引擎逐窗推理**
+（不是播放预渲染结果）。合成信号驱动，固定种子可复现，不含患者数据。
+
+本机实测：GTC / NCSE × 1–5 次发作 × 2–10 小时，全部检出，误报 3–5 次事件/6 小时。
+注意这是**合成信号**的成绩，不代表真实性能 —— 真实数字见本文开头。
+
+```bash
+cd modelscope_studio
+# app.py 需与 engine/ sim/ 同层，见该目录 README
+pip install -r requirements.txt && python app.py
+```
+
+## 六、跑起来
 
 ```bash
 cd solutions/NightGuard-夜间发作判据引擎
@@ -99,7 +114,7 @@ for t in tests/test_*.py; do python "$t"; done   # 292 项
 演示仪表盘：浏览器直接打开 `demo/dashboard.html`（GTC）或 `demo/dashboard_ncse.html`（NCSE），
 **数据是合成的，不含任何患者信息**。
 
-## 六、数据与隐私
+## 七、数据与隐私
 
 **本目录不含任何患者数据**，`.gitignore` 对 `*.edf`、`cache*/`、`sub-*/` 做了硬排除。
 不含 API Key / Token。演示数据为合成（seed=2026）。
@@ -110,7 +125,7 @@ for t in tests/test_*.py; do python "$t"; done   # 292 项
 
 患者标识（如 `sub-015`）均为数据集原始匿名编号，非真实身份。
 
-## 七、评估口径（复现时必须对齐，否则数字不可比）
+## 八、评估口径（复现时必须对齐，否则数字不可比）
 
 1. **按发作类型分层**：致命级（`sz_foc_f2b` / `sz_gen_*`）与非致命（tonic/clonic/myoclonic）必须分开报，混在一起会把 20/23 平均成 65%
 2. **事件级和响铃级两把尺子一起报**：9 个误报事件可以等于 2846 次响铃
@@ -118,12 +133,12 @@ for t in tests/test_*.py; do python "$t"; done   # 292 项
 4. **背景时长要对齐**：2h → 12h 背景，同工作点误报从 1.15 涨到 1.55/h
 5. **缺通道的记录不能静默剔除**：曾有 3 次致命级发作因缺电极从分母消失，31 被当成 28
 
-## 八、医疗边界
+## 九、医疗边界
 
 仅为**未经临床验证的算法原型**，不是医疗诊断设备，不替代脑电图，不替代医生诊疗，
 不承诺杜绝 SUDEP。不得用于实际医疗决策。
 
-## 九、下一步有空间的方向
+## 十、下一步有空间的方向
 
 如果你手上有**长期家庭环境数据集**（单人 ≥30 夜），个体化这条路还有空间 ——
 当前数据单人最多 8 夜，拟合期问题问不到底。

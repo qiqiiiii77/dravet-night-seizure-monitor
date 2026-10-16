@@ -1,0 +1,6 @@
+# 本机实测通过的组合（gradio 5.50.0 / fastapi 0.143.3 / starlette 0.52.1）
+# 注意：不要钉 gradio==4.44.1 —— 它依赖 huggingface_hub 的 HfFolder（0.26 起已移除），
+# 且与当前 fastapi/starlette 不兼容，启动即 ASGI 报错。两种失败本机都复现过。
+gradio>=5,<6
+numpy>=1.24
+matplotlib>=3.7
