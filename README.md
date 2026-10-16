@@ -95,7 +95,9 @@ Dravet 综合征是 SCN1A 基因突变导致的婴儿起病、终身性、难治
 ## 🗂 方案总览
 
 <!-- SOLUTIONS_INDEX_START -->
-> 暂无提交方案。比赛提交请 Fork 本仓库并开 [「提交成果链接」Issue](../../issues/new/choose)；赛后共建方案见 [solutions/ 指南](solutions/README.md)
+| 团队 | 方案 | 状态 | 简介 | 仓库/Demo |
+|---|---|---|---|---|
+| NightGuard | 夜间发作判据引擎 | 测试中 | 在公开临床数据上实测的夜间发作报警判据引擎——致命级发作 23/23 检出，代价是误报 6.70 次/10 夜；含已验证的负面结论。 | [solutions/NightGuard-夜间发作判据引擎](solutions/NightGuard-夜间发作判据引擎) |
 <!-- SOLUTIONS_INDEX_END -->
 
 
