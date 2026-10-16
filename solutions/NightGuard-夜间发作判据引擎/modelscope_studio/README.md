@@ -24,7 +24,9 @@ deployspec:
 > app.py  requirements.txt  README.md  LICENSE  engine/  sim/  demo/
 > ```
 >
-> **已上线**：https://modelscope.cn/studios/qiqixiaoxiao/nightguard-night-seizure-engine
+> **已上线并实测跑通**：
+> https://modelscope.cn/studios/qiqixiaoxiao/nightguard-night-seizure-engine
+> （直连域名 https://qiqixiaoxiao-nightguard-night-seizure-engine.ms.show）
 >
 > 上传时踩到的坑：魔搭 SDK 把 >64KB 的文件（含 `.py`）自动转 LFS，
 > `engine/gate.py` 96KB 被转成指针文本，运行时 `import` 直接 SyntaxError。
