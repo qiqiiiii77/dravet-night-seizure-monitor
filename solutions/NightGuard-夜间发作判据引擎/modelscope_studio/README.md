@@ -23,6 +23,13 @@ deployspec:
 > ```
 > app.py  requirements.txt  README.md  LICENSE  engine/  sim/  demo/
 > ```
+>
+> **已上线**：https://modelscope.cn/studios/qiqixiaoxiao/nightguard-night-seizure-engine
+>
+> 上传时踩到的坑：魔搭 SDK 把 >64KB 的文件（含 `.py`）自动转 LFS，
+> `engine/gate.py` 96KB 被转成指针文本，运行时 `import` 直接 SyntaxError。
+> 修法是删掉 `.gitattributes` 里那一行再用 git 推源码 ——
+> `upload_folder` 会把已提交文件判为 skip，改阈值对它无效。
 
 「罕见·无界」黑客松 · 赛题5（Dravet 综合征夜间睡眠监护设备）· **算法层方案**
 
